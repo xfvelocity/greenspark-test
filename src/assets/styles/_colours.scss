@@ -1,0 +1,13 @@
+$colours: (
+  "blue": #2e3a8c,
+  "green": #3b755f,
+  "beige": #f2ebdb,
+  "white": #fff,
+  "black": #000,
+);
+
+@each $name, $colour in $colours {
+  .widget-bg-#{$name} {
+    background: $colour;
+  }
+}
