@@ -1,11 +1,17 @@
 <template>
   <div class="widget">
-    <div :class="`widget-title widget-bg-${widget.selectedColor}`">
+    <div :class="`widget-title bg-${widget.selectedColor}`">
+      <icon src="greenspark-logo" />
+
       <p>{{ widget.type }}</p>
     </div>
 
     <div class="widget-option">
-      <p>Link to Profile</p>
+      <div class="widget-option-link">
+        <p>Link to Profile</p>
+
+        <icon src="tooltip" />
+      </div>
 
       <checkbox
         :model-value="widget.linked"
@@ -20,7 +26,7 @@
         <div
           v-for="(colour, i) in colours"
           :key="i"
-          :class="`widget-colour hover widget-bg-${colour}`"
+          :class="`widget-colour hover bg-${colour}`"
           @click="$emit('update:colour', colour)"
         />
       </div>
@@ -38,17 +44,21 @@
 </template>
 
 <script lang="ts" setup>
+import type { PropType } from "vue";
+import type { WidgetType } from "../../types/generic.types.ts";
+
 import Checkbox from "../checkbox/Checkbox.vue";
 import Toggle from "../toggle/Toggle.vue";
+import Icon from "../icon/Icon.vue";
 
 defineProps({
   widget: {
-    type: Object as PropType<any>,
+    type: Object as PropType<WidgetType>,
     default: () => ({}),
   },
 });
 
-const colours: any = ["green", "blue", "beige", "white", "black"];
+const colours: string[] = ["green", "blue", "beige", "white", "black"];
 </script>
 
 <style lang="scss" scoped>
@@ -59,6 +69,9 @@ const colours: any = ["green", "blue", "beige", "white", "black"];
 
   &-title {
     padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    gap: 5px;
   }
 
   &-option {
@@ -69,6 +82,12 @@ const colours: any = ["green", "blue", "beige", "white", "black"];
     &-colours {
       gap: 5px;
       display: flex;
+    }
+
+    &-link {
+      gap: 5px;
+      display: flex;
+      align-items: center;
     }
   }
 

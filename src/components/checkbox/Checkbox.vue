@@ -1,35 +1,34 @@
 <template>
   <input
-    class="checkbox"
     type="checkbox"
-    :checked="modelValue"
-    @update:modelValue="onUpdateValue"
+    class="checkbox hover-circle"
+    :class="{ 'checkbox-selected': modelValue }"
+    @update:modelValue="$emit('update:modelValue', !modelValue)"
   />
 </template>
 
-<script setup>
-import { defineProps, defineEmits } from "vue";
-
-const props = defineProps({
+<script lang="ts" setup>
+defineProps({
   modelValue: {
     type: Boolean,
     default: false,
   },
-  label: {
-    type: String,
-    required: true,
-  },
 });
 
-const emit = defineEmits(["update:modelValue"]);
-
-const onUpdateValue = (event) => {
-  emit("update:modelValue", event.target.checked);
-};
+defineEmits(["update:modelValue"]);
 </script>
 
 <style lang="scss" scoped>
-input[type="checkbox"] {
-  margin-right: 8px;
+@use "sass:map";
+@use "../../assets/styles/colours";
+@use "../../assets/styles/mixins";
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  cursor: pointer;
+  background: none;
+  accent-color: map.get(colours.$colours, "green");
 }
 </style>

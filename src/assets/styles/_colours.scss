@@ -4,10 +4,19 @@ $colours: (
   "beige": #f2ebdb,
   "white": #fff,
   "black": #000,
+  "darkgrey": #212121,
+  "lightgreen": #afc6bd,
 );
 
 @each $name, $colour in $colours {
-  .widget-bg-#{$name} {
+  .bg-#{$name} {
     background: $colour;
+  }
+
+  .icon-colour-#{$name} {
+    :deep(path),
+    :deep(rect) {
+      fill: #{$colour} !important;
+    }
   }
 }

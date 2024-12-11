@@ -1,11 +1,14 @@
+@use "fonts";
 @use "colours";
+@use "mixins";
+@use "sass:map";
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Cabin", sans-serif;
   margin: 0;
 }
 
@@ -14,5 +17,24 @@ body {
 
   &:hover {
     opacity: 0.7;
+  }
+}
+
+.hover-circle {
+  z-index: 1;
+
+  &:hover {
+    &::before {
+      content: "";
+      display: block;
+      width: 160%;
+      height: 160%;
+      border-radius: 50%;
+      z-index: -1;
+      background: map.get(colours.$colours, "lightgreen");
+      opacity: 0.3;
+
+      @include mixins.center;
+    }
   }
 }

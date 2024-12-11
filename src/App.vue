@@ -10,11 +10,13 @@
 </template>
 
 <script lang="ts" setup>
+import type { WidgetType } from "./types/generic.types.ts";
+
 import { ref } from "vue";
 
 import Widget from "./components/widget/Widget.vue";
 
-const widgets = ref<any>([
+const widgets = ref<WidgetType[]>([
   {
     id: 1,
     type: "carbon",
