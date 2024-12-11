@@ -8,6 +8,7 @@
 </template>
 
 <script lang="ts" setup>
+// ** Props **
 defineProps({
   modelValue: {
     type: Boolean,
@@ -15,13 +16,14 @@ defineProps({
   },
 });
 
+// ** Emits **
 defineEmits(["update:modelValue"]);
 </script>
 
 <style lang="scss" scoped>
 @use "sass:map";
-@use "../../assets/styles/colours";
-@use "../../assets/styles/mixins";
+@use "@/assets/styles/colours";
+@use "@/assets/styles/mixins";
 
 .checkbox {
   width: 18px;

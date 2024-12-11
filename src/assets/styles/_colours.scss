@@ -14,9 +14,13 @@ $colours: (
   }
 
   .icon-colour-#{$name} {
-    :deep(path),
-    :deep(rect) {
-      fill: #{$colour} !important;
+    path,
+    rect {
+      fill: $colour !important;
     }
+  }
+
+  .text-#{$name} {
+    color: $colour;
   }
 }

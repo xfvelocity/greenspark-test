@@ -8,6 +8,7 @@
 <script lang="ts" setup>
 import InlineSvg from "vue-inline-svg";
 
+// ** Props **
 defineProps({
   src: {
     type: String,
@@ -20,7 +21,8 @@ defineProps({
   },
 });
 
-const getImageUrl = (name: string) => {
+// ** Methods **
+const getImageUrl = (name: string): string => {
   return new URL(`../../assets/icons/${name}.svg`, import.meta.url).href;
 };
 </script>

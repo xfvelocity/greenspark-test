@@ -10,6 +10,7 @@
 <script lang="ts" setup>
 import { defineProps, defineEmits } from "vue";
 
+// ** Props **
 defineProps({
   modelValue: {
     type: Boolean,
@@ -17,12 +18,13 @@ defineProps({
   },
 });
 
+// ** Emits **
 defineEmits(["update:modelValue"]);
 </script>
 
 <style lang="scss" scoped>
 @use "sass:map";
-@use "../../assets/styles/colours";
+@use "@/assets/styles/colours";
 
 .toggle {
   width: 50px;

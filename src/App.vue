@@ -4,7 +4,7 @@
     :key="i"
     :widget="widget"
     @update:linked="widget.linked = $event"
-    @update:active="widget.active = $event"
+    @update:active="handleActiveState"
     @update:colour="widget.selectedColor = $event"
   />
 </template>
@@ -13,9 +13,9 @@
 import type { WidgetType } from "./types/generic.types.ts";
 
 import { ref } from "vue";
-
 import Widget from "./components/widget/Widget.vue";
 
+// ** Data **
 const widgets = ref<WidgetType[]>([
   {
     id: 1,
@@ -33,18 +33,30 @@ const widgets = ref<WidgetType[]>([
     action: "plants",
     active: true,
     linked: false,
-    selectedColor: "black",
+    selectedColor: "blue",
   },
   {
     id: 3,
-    type: "plastic",
+    type: "plastic bottles",
     amount: 300,
     action: "collects",
-    active: true,
+    active: false,
     linked: true,
     selectedColor: "beige",
   },
 ]);
+
+// ** Methods **
+const handleActiveState = (
+  selectedWidget: WidgetType,
+  isActive: boolean,
+): void => {
+  widgets.value.forEach((widget) => {
+    widget.active = false;
+  });
+
+  selectedWidget.active = isActive;
+};
 </script>
 
 <style lang="scss">

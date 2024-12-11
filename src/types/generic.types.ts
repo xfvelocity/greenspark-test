@@ -6,4 +6,5 @@ export interface WidgetType {
   active: boolean;
   linked: boolean;
   selectedColor: string;
+  unit?: string;
 }
