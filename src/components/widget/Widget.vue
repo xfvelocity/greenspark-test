@@ -73,7 +73,6 @@ import { computed } from "vue";
 import Checkbox from "@/components/checkbox/Checkbox.vue";
 import Toggle from "@/components/toggle/Toggle.vue";
 import Icon from "@/components/icon/Icon.vue";
-import PopupMenu from "@/components/menu/PopupMenu.vue";
 import Tooltip from "@/components/tooltip/Tooltip.vue";
 import CustomButton from "@/components/button/CustomButton.vue";
 

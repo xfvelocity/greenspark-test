@@ -12,7 +12,6 @@
         class="tooltip"
         @mouseenter="showTooltip"
         @mouseleave="hideTooltip"
-        :style="tooltipStyle"
       >
         <slot />
       </div>
@@ -24,7 +23,7 @@
 import { ref, computed } from "vue";
 
 // ** Data **
-const isVisible = ref<boolean>(true);
+const isVisible = ref<boolean>(false);
 
 // ** Methods **
 const showTooltip = (): void => {
