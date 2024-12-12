@@ -17,7 +17,21 @@
         <div class="widget-option-link">
           <p class="text-green">Link to Profile</p>
 
-          <icon src="tooltip" />
+          <tooltip>
+            <template #activator>
+              <icon src="tooltip" />
+            </template>
+
+            <div class="widget-option-link-tooltip">
+              <p>
+                This widget links directly to your public profile so that you
+                can easily share your impact with your customers. Turn it off
+                here if you do not want the badge to link to it.
+              </p>
+
+              <custom-button> View Public Profile </custom-button>
+            </div>
+          </tooltip>
         </div>
 
         <checkbox
@@ -59,6 +73,9 @@ import { computed } from "vue";
 import Checkbox from "@/components/checkbox/Checkbox.vue";
 import Toggle from "@/components/toggle/Toggle.vue";
 import Icon from "@/components/icon/Icon.vue";
+import PopupMenu from "@/components/menu/PopupMenu.vue";
+import Tooltip from "@/components/tooltip/Tooltip.vue";
+import CustomButton from "@/components/button/CustomButton.vue";
 
 // ** Props **
 const props = defineProps({
@@ -119,6 +136,10 @@ const isLightBackround = computed<boolean>(() => {
       gap: 5px;
       display: flex;
       align-items: center;
+
+      &-tooltip {
+        text-align: center;
+      }
     }
   }
 

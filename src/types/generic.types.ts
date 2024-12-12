@@ -8,3 +8,10 @@ export interface WidgetType {
   selectedColor: string;
   unit?: string;
 }
+
+export interface MenuPositions {
+  top?: string;
+  left?: string;
+  bottom?: string;
+  right?: string;
+}

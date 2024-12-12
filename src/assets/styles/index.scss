@@ -8,8 +8,13 @@
 }
 
 body {
-  font-family: "Cabin", sans-serif;
   margin: 0;
+}
+
+body,
+button {
+  font-family: "Cabin", sans-serif;
+  font-size: 14px;
 }
 
 .hover {
