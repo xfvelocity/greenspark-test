@@ -1,50 +1,29 @@
 <template>
-  <widget
-    v-for="(widget, i) in widgets"
-    :key="i"
-    :widget="widget"
-    @update:linked="widget.linked = $event"
-    @update:active="handleActiveState"
-    @update:colour="widget.selectedColor = $event"
-  />
+  <div class="widgets">
+    <widget
+      v-for="(widget, i) in widgets"
+      :key="i"
+      :widget="widget"
+      @update:linked="widget.linked = $event"
+      @update:active="handleActiveState"
+      @update:colour="widget.selectedColor = $event"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
 import type { WidgetType } from "./types/generic.types.ts";
 
 import { ref } from "vue";
+import { useWidgetsStore } from "@/stores/widgets";
+import { storeToRefs } from "pinia";
+
 import Widget from "./components/widget/Widget.vue";
 
 // ** Data **
-const widgets = ref<WidgetType[]>([
-  {
-    id: 1,
-    type: "carbon",
-    amount: 2,
-    action: "offsets",
-    active: false,
-    linked: false,
-    selectedColor: "green",
-  },
-  {
-    id: 2,
-    type: "trees",
-    amount: 15,
-    action: "plants",
-    active: true,
-    linked: false,
-    selectedColor: "blue",
-  },
-  {
-    id: 3,
-    type: "plastic bottles",
-    amount: 300,
-    action: "collects",
-    active: false,
-    linked: true,
-    selectedColor: "beige",
-  },
-]);
+const widgetsStore = useWidgetsStore();
+
+const { widgets } = storeToRefs(widgetsStore);
 
 // ** Methods **
 const handleActiveState = (
@@ -61,4 +40,17 @@ const handleActiveState = (
 
 <style lang="scss">
 @use "assets/styles/index.scss";
+
+.widgets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+  gap: 50px;
+
+  @media (min-width: 850px) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
 </style>

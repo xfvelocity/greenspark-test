@@ -47,7 +47,10 @@
           <div
             v-for="(colour, i) in colours"
             :key="i"
-            :class="`widget-colour hover bg-${colour}`"
+            :class="[
+              `widget-colour hover bg-${colour}`,
+              { 'widget-colour-selected': colour === widget.selectedColor },
+            ]"
             @click="$emit('update:colour', colour)"
           />
         </div>
@@ -103,8 +106,7 @@ const isLightBackround = computed<boolean>(() => {
 
 <style lang="scss" scoped>
 .widget {
-  max-width: 350px;
-  margin: 30px auto;
+  width: 330px;
 
   &-title {
     padding: 10px 10px;
@@ -146,6 +148,10 @@ const isLightBackround = computed<boolean>(() => {
     height: 20px;
     width: 20px;
     border: 1px solid rgb(200, 200, 200);
+
+    &-selected {
+      border: 3px solid rgba(170, 170, 170);
+    }
   }
 }
 </style>

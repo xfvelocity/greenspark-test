@@ -15,3 +15,7 @@ export interface MenuPositions {
   bottom?: string;
   right?: string;
 }
+
+export interface WidgetStore {
+  widgets: WidgetType[];
+}

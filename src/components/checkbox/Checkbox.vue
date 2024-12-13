@@ -3,7 +3,8 @@
     type="checkbox"
     class="checkbox hover-circle"
     :class="{ 'checkbox-selected': modelValue }"
-    @update:modelValue="$emit('update:modelValue', !modelValue)"
+    :checked="modelValue"
+    @change="$emit('update:modelValue', !modelValue)"
   />
 </template>
 
